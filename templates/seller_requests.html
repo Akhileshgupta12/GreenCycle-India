@@ -1,0 +1,226 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+
+<style>
+
+body{
+    background:#334155;
+    font-family:Poppins;
+    min-height:100vh;
+}
+
+.container{
+    padding:40px;
+}
+
+.heading{
+    text-align:center;
+    color:white;
+    margin-bottom:40px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.content{
+    padding:20px;
+}
+
+.content h2{
+    margin-bottom:15px;
+    color:#0f172a;
+}
+
+.content p{
+    margin:8px 0;
+}
+
+.pending{
+    background:#facc15;
+    color:black;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+.approved{
+    background:#22c55e;
+    color:white;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+.rejected{
+    background:#ef4444;
+    color:white;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+.no-data{
+    text-align:center;
+    color:white;
+    margin-top:100px;
+    font-size:25px;
+}
+
+@media(max-width:900px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+
+<div class="container">
+
+    <h1 class="heading">
+        📦 Buyer Requests
+    </h1>
+
+    {% if requests %}
+
+    <div class="cards">
+
+        {% for request in requests %}
+
+        <div class="card">
+
+            <img src="{{ request.waste.image.url }}">
+
+            <div class="content">
+
+                <h2>
+                    {{ request.waste.material }}
+                </h2>
+
+                <p>
+                    <b>Requested Quantity:</b>
+                    {{ request.quantity }} KG
+                </p>
+
+                <p>
+                    <b>Payment:</b>
+                    {{ request.payment_method }}
+                </p>
+
+                <p>
+                    <b>Buyer:</b>
+                    Buyer #{{ request.id }}
+                </p>
+
+                <p>
+                    <b>Date:</b>
+                    {{ request.created_at }}
+                </p>
+
+{% if request.status == "Pending" %}
+
+<div class="pending">
+    ⏳ Pending
+</div>
+
+<div style="display:flex; gap:10px; margin-top:15px;">
+
+    <a href="/approve-request/{{ request.id }}/"
+       style="
+       flex:1;
+       text-align:center;
+       background:#22c55e;
+       color:white;
+       padding:12px;
+       border-radius:10px;
+       text-decoration:none;
+       font-weight:bold;
+       ">
+
+       ✅ Approve
+
+    </a>
+
+    <a href="/reject-request/{{ request.id }}/"
+       style="
+       flex:1;
+       text-align:center;
+       background:#ef4444;
+       color:white;
+       padding:12px;
+       border-radius:10px;
+       text-decoration:none;
+       font-weight:bold;
+       ">
+
+       ❌ Reject
+
+    </a>
+
+</div>
+
+{% elif request.status == "Approved" %}
+
+<div class="approved">
+    ✅ Approved
+</div>
+
+{% else %}
+
+<div class="rejected">
+    ❌ Rejected
+</div>
+
+{% endif %}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="no-data">
+
+        No Buyer Requests Yet
+
+    </div>
+
+    {% endif %}
+
+</div>

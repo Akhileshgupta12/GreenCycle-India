@@ -1,0 +1,381 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0f172a;
+    font-family:Poppins;
+    margin:0;
+    padding:0;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+.heading{
+    color:white;
+    text-align:center;
+    margin-bottom:40px;
+    font-size:40px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h1{
+    font-size:40px;
+    margin-bottom:10px;
+    color:#2563eb;
+}
+
+.card p{
+    font-size:20px;
+    font-weight:bold;
+    color:#0f172a;
+}
+
+.card-link{
+    text-decoration:none;
+}
+
+.analytics-box{
+    margin-top:50px;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.city-box{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    padding:12px;
+    background:#f1f5f9;
+    border-radius:10px;
+}
+
+.chart-box{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    margin-top:40px;
+}
+
+</style>
+
+<div class="container">
+
+    <h1 class="heading">
+        📊 Admin Dashboard
+    </h1>
+
+    <div class="cards">
+
+        <!-- TOTAL SELLERS -->
+
+        <a href="/all-sellers/" class="card-link">
+
+            <div class="card">
+
+                <h1>{{ total_sellers }}</h1>
+
+                <p>Total Sellers</p>
+
+            </div>
+
+        </a>
+
+        <!-- TOTAL BUYERS -->
+
+        <a href="/all-buyers/" class="card-link">
+
+            <div class="card">
+
+                <h1>{{ total_buyers }}</h1>
+
+                <p>Total Buyers</p>
+
+            </div>
+
+        </a>
+
+        <!-- TOTAL WASTE -->
+
+        <a href="/all-waste/" class="card-link">
+
+            <div class="card">
+
+                <h1>{{ total_waste }}</h1>
+
+                <p>Waste Uploads</p>
+
+            </div>
+
+        </a>
+
+        <!-- TOTAL REQUESTS -->
+
+        <a href="/all-requests/" class="card-link">
+
+            <div class="card">
+
+                <h1>{{ total_requests }}</h1>
+
+                <p>Total Requests</p>
+
+            </div>
+
+        </a>
+
+        <!-- PENDING -->
+
+        <a href="/pending-requests/" class="card-link">
+
+            <div class="card">
+
+                <h1>{{ pending_requests }}</h1>
+
+                <p>Pending Requests</p>
+
+            </div>
+
+        </a>
+
+        <!-- APPROVED -->
+
+        <a href="/approved-requests/" class="card-link">
+
+            <div class="card">
+
+                <h1>{{ approved_requests }}</h1>
+
+                <p>Approved Requests</p>
+
+            </div>
+
+        </a>
+
+        <!-- EARNINGS -->
+
+        <a href="/earnings/" class="card-link">
+
+            <div class="card">
+
+                <h1>₹{{ total_earnings }}</h1>
+
+                <p>Total Earnings</p>
+
+            </div>
+
+        </a>
+
+    
+        
+<a href="/contact-messages/" class="card-link">
+
+    <div class="card">
+
+        <h1>📩</h1>
+
+        <p>Contact Messages</p>
+
+    </div>
+
+</a>
+
+    </div>
+<div class="analytics-box" style=" width:100%; max-width:1200px; margin:auto; ">
+
+    <h2 style="margin-bottom:20px;">
+        🔔 Recent Notifications
+    </h2>
+
+    {% for note in notifications %}
+
+
+
+<div class="city-box" style=" width:100%; min-height:70px; display:flex; justify-content:space-between; align-items:center; padding:20px; background:#f8fafc; border-radius:12px; margin-bottom:15px; ">
+
+
+
+    <div>
+
+        <div style="
+            font-weight:600;
+            color:#0f172a;
+            font-size:16px;
+        ">
+
+            🔔 {{ note.message }}
+
+        </div>
+
+    </div>
+
+    <div style="
+        color:gray;
+        font-size:13px;
+    ">
+
+        {{ note.created_at|date:"d M Y, h:i A" }}
+
+    </div>
+
+</div>
+
+
+
+    {% endfor %}
+
+</div>
+
+
+    </div>
+
+
+
+    <!-- TOP CITIES -->
+
+    <div class="analytics-box">
+
+        <h2 style="margin-bottom:20px;">
+
+            📍 Top Waste Cities
+
+        </h2>
+
+        {% for city in top_cities %}
+
+        <div class="city-box">
+
+            <b>
+
+                {{ city.city }}
+
+            </b>
+
+            <span>
+
+                {{ city.total }} Uploads
+
+            </span>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- CHART -->
+
+    <div class="chart-box">
+
+        <h2 style="margin-bottom:20px;">
+
+            📊 Platform Analytics
+
+        </h2>
+
+        <canvas id="myChart"></canvas>
+
+    </div>
+
+</div>
+
+<!-- CHART JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+
+    type: 'bar',
+
+    data: {
+
+        labels: [
+            'Sellers',
+            'Buyers',
+            'Waste Uploads',
+            'Requests'
+        ],
+
+        datasets: [{
+
+            label: 'Platform Data',
+
+            data: [
+
+                {{ total_sellers }},
+
+                {{ total_buyers }},
+
+                {{ total_waste }},
+
+                {{ total_requests }}
+
+            ],
+
+            backgroundColor: [
+
+                '#2563eb',
+
+                '#22c55e',
+
+                '#f59e0b',
+
+                '#ef4444'
+
+            ],
+
+            borderRadius:10
+
+        }]
+    },
+
+    options: {
+
+        responsive:true
+
+    }
+
+});
+
+</script>
+
+{% include 'footer.html' %}

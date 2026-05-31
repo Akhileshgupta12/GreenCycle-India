@@ -1,0 +1,108 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+
+<style>
+
+body{
+    background:#0f172a;
+    font-family:Poppins;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+.heading{
+    color:white;
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.card h2{
+    color:#2563eb;
+    margin-bottom:15px;
+}
+
+.card p{
+    margin:8px 0;
+}
+
+</style>
+
+<div class="container">
+
+    <h1 class="heading">
+        👥 All Buyers
+    </h1>
+
+    <div class="cards">
+
+        {% for buyer in buyers %}
+
+        <div class="card">
+
+            <h2>
+                {{ buyer.name }}
+            </h2>
+
+            <p>
+
+                <b>Email:</b>
+
+                {{ buyer.email }}
+
+            </p>
+
+            <p>
+
+                <b>City:</b>
+
+                {{ buyer.city }}
+
+            </p>
+
+            <p>
+
+                <b>State:</b>
+
+                {{ buyer.state }}
+
+            </p>
+
+            <p>
+
+                <b>Pincode:</b>
+
+                {{ buyer.pincode }}
+
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% include 'footer.html' %}

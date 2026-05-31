@@ -1,0 +1,130 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+
+<style>
+
+body{
+    background:#0f172a;
+    font-family:Poppins;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+.heading{
+    color:white;
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.content{
+    padding:20px;
+}
+
+.pending{
+    background:#facc15;
+    color:black;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+</style>
+
+<div class="container">
+
+    <h1 class="heading">
+        ⏳ Pending Requests
+    </h1>
+
+    <div class="cards">
+
+        {% for req in requests %}
+
+        <div class="card">
+
+            <img src="{{ req.waste.image.url }}">
+
+            <div class="content">
+
+                <h2>
+                    {{ req.waste.material }}
+                </h2>
+
+                <p>
+
+                    <b>Buyer:</b>
+
+                    {{ req.buyer_name }}
+
+                </p>
+
+                <p>
+
+                    <b>Quantity:</b>
+
+                    {{ req.quantity }} KG
+
+                </p>
+
+                <p>
+
+                    <b>Payment:</b>
+
+                    {{ req.payment_method }}
+
+                </p>
+
+                <p>
+
+                    <b>Mobile:</b>
+
+                    {{ req.mobile }}
+
+                </p>
+
+                <div class="pending">
+
+                    ⏳ Pending
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<style>
+body{
+    font-family:Poppins;
+    background:linear-gradient(135deg,#43e97b,#38f9d7);
+}
+
+/* 🔥 BOX बड़ा */
+.box{
+    max-width:500px;        /* पहले 400px था */
+    margin:100px auto;
+    background:white;
+    padding:40px;           /* padding बढ़ाया */
+    border-radius:20px;
+    text-align:center;
+}
+
+/* 🔥 Heading बड़ा */
+h2{
+    font-size:28px;
+}
+
+/* 🔥 Input बड़ा */
+input{
+    width:100%;
+    padding:14px;           /* पहले 10px था */
+    margin:12px 0;
+    font-size:16px;
+}
+
+/* 🔥 Button बड़ा */
+button{
+    width:100%;
+    padding:14px;
+    background:green;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+}
+button:hover{
+    background:#0f7a2f;
+}
+@media(max-width:600px){
+    .box{
+        margin:40px 15px;
+        padding:25px;
+    }
+}
+.back-btn{
+    display:block;        /* 👈 ये important है */
+    text-align:left;      /* 👈 left में ले जाएगा */
+    margin-bottom:15px;
+    text-decoration:none;
+    font-weight:bold;
+    color:#14532d;
+    font-size:18px;
+}
+</style>
+
+</head>
+
+<body>
+{% include 'navbar.html' %}
+<div class="box">
+<a href="/" class="back-btn">← Go Back</a>
+<h2>Login</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="email" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="Password">
+
+    <button type="submit">Login</button>
+</form>
+
+<p style="color:red;">{{ error }}</p>
+
+<p>New user? <a href="/register/">Register here</a></p>
+
+</div>
+
+</body>
+</html>

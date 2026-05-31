@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenCycle India</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<!-- Navbar -->
+{% include 'navbar.html' %}
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Transforming Waste Into Smart Opportunities</h1>
+    <p>
+        Connecting farmers, vendors, recyclers and industries across India.
+    </p>
+
+    <button>Get Started</button>
+</section>
+
+<section class="listing-section">
+
+<h2 class="section-title">Popular Waste Materials</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="{% static 'images/sugarcane.png' %}">
+<h3>Sugarcane Bagasse</h3>
+<p class="price"> Starting from ₹{{ sugarcane_price }}/kg </p>
+<a href="{% url 'material_detail' 'sugarcane' %}">
+    <button>Know More</button>
+</a>
+</div>
+
+<div class="card">
+<img src="{% static 'images/coconut.png' %}">
+<h3>Coconut Shell</h3>
+<p class="price"> Starting from ₹{{ coconut_price }}/kg </p>
+<a href="{% url 'material_detail' 'coconut' %}">
+    <button>Know More</button>
+</a>
+</div>
+
+<div class="card">
+<img src="{% static 'images/copper.png' %}">
+<h3>Copper Scrap</h3>
+<p class="price"> Starting from ₹{{ copper_price }}/kg </p>
+<a href="{% url 'material_detail' 'copper' %}">
+    <button>Know More</button>
+</a>
+</div>
+
+<div class="card">
+<img src="{% static 'images/iron.png' %}">
+<h3>Iron Scrap</h3>
+<p class="price">Starting from ₹{{ iron_price }}/kg</p>
+<a href="{% url 'material_detail' 'iron' %}">
+    <button>Know More</button>
+</a>
+</div>
+
+<div class="card">
+<img src="{% static 'images/aluminium.png' %}">
+<h3>Aluminium Scrap</h3>
+<p class="price">Starting from ₹{{ aluminium_price }}/kg</p>
+<a href="{% url 'material_detail' 'aluminium' %}">
+    <button>Know More</button>
+</a>
+</div>
+
+<div class="card">
+<img src="{% static 'images/tin.png' %}">
+<h3>Tin Scrap</h3>
+<p class="price"> Starting from ₹{{ tin_price }}/kg </p>
+<a href="{% url 'material_detail' 'tin' %}">
+    <button>Know More</button>
+</a>
+</div>
+
+<div class="card">
+<img src="{% static 'images/plastic.png' %}">
+<h3>Plastic Scrap</h3>
+<p class="price">Starting from ₹{{ plastic_price }}/kg</p>
+<a href="{% url 'material_detail' 'plastic' %}">
+    <button>Know More</button>
+</a>
+</div>
+
+<div class="card">
+<img src="{% static 'images/paper.png' %}">
+<h3>Paper Waste</h3>
+<p class="price">Starting from ₹{{ paper_price }}/kg</p>
+<a href="{% url 'material_detail' 'paper' %}">
+    <button>Know More</button>
+</a>
+</div>
+
+<div class="card">
+<img src="{% static 'images/glass.png' %}">
+<h3>Glass Waste</h3>
+<p class="price">Starting from ₹{{ glass_price }}/kg</p>
+<a href="{% url 'material_detail' 'glass' %}">
+    <button>Know More</button>
+</a>
+</div>
+
+<div class="card">
+<img src="{% static 'images/rubber.png' %}">
+<h3>Rubber Scrap</h3>
+<p class="price">Starting from ₹{{ rubber_price }}/kg</p>
+<a href="{% url 'material_detail' 'rubber' %}">
+    <button>Know More</button>
+</a>
+</div>
+
+</div>
+</section>
+
+
+
+{% include 'footer.html' %}
+</body>
+</html>

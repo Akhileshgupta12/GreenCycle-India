@@ -1,0 +1,58 @@
+{% include 'navbar.html' %}
+
+<style>
+
+body{
+    background:#f1f5f9;
+    font-family:Poppins;
+}
+
+.container{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.time{
+    color:gray;
+    font-size:14px;
+    margin-top:10px;
+}
+
+</style>
+
+<div class="container">
+
+    <h1>
+        🔔 Buyer Notifications
+    </h1>
+
+    {% for n in notifications %}
+
+    <div class="card">
+
+        <h3>{{ n.message }}</h3>
+
+        <div class="time">
+
+            {{ n.created_at }}
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <h3>No notifications yet</h3>
+
+    {% endfor %}
+
+</div>

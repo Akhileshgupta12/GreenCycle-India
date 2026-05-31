@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Copper Scrap</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Poppins;
+    background:linear-gradient(135deg, #fbc2eb, #a6c1ee);
+}
+
+.container{
+    max-width:900px;
+    margin:40px auto;
+    padding:30px;
+    border-radius:20px;
+    background:white;
+}
+
+.hero img{
+    width:100%;
+    height:300px;
+    object-fit:contain;
+}
+
+.price{ color:green; font-weight:bold; }
+
+.sell-btn{
+    width:100%;
+    padding:12px;
+    background:#ff9800;
+    color:white;
+    border:none;
+    border-radius:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+<a href="/" style="text-decoration:none; font-weight:bold; color:#14532d; font-size:18px;">
+    ⬅ Back
+</a>
+
+    <div class="hero">
+        <img src="{% static 'images/copper.png' %}">
+        <h1>🔩 Copper Scrap</h1>
+        <p class="price">₹600 – ₹700 per kg</p>
+    </div>
+
+    <p>
+        Copper scrap is highly valuable and widely used in electrical
+        industries due to its conductivity and recyclability.
+    </p>
+
+    <h2>Uses</h2>
+    <ul>
+        <li>Electrical wiring</li>
+        <li>Electronics manufacturing</li>
+        <li>Recycling industries</li>
+    </ul>
+
+    <p><b>Demand:</b> Very High 🔥🔥</p>
+
+    <a href="/sell/">
+    <button class="sell-btn">Sell Now</button>
+</a>
+</div>
+
+</body>
+</html>

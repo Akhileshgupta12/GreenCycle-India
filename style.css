@@ -1,0 +1,143 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4fff4;
+}
+
+/* Navbar */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:white;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.brand img{
+    width:90px;
+}
+
+.brand h2{
+    color:green;
+}
+
+.menu{
+    display:flex;
+    list-style:none;
+    gap:25px;
+    font-weight:bold;
+}
+
+/* Hero */
+.hero{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h1{
+    font-size:48px;
+    color:#14532d;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    max-width:700px;
+    margin:auto;
+    margin-bottom:25px;
+}
+
+.hero button{
+    padding:14px 28px;
+    border:none;
+    background:green;
+    color:white;
+    font-size:18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Cards */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    padding:40px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    text-align:center;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    font-weight:bold;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#14532d;
+    color:white;
+    margin-top:30px;
+}
+
+/* Tablet */
+@media(max-width:900px){
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+}
+
+/* Mobile */
+@media(max-width:600px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .menu{
+        flex-direction:column;
+        text-align:center;
+        gap:12px;
+    }
+
+    .brand img{
+        width:75px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+        padding:20px;
+    }
+
+    .hero button{
+        width:90%;
+    }
+}

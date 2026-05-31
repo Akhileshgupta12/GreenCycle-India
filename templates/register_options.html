@@ -1,0 +1,90 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+
+<style>
+
+body{
+    background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+    font-family:Poppins;
+    min-height:100vh;
+}
+
+.register-type-container{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:120px;
+    flex-wrap:wrap;
+}
+
+.type-card{
+    width:300px;
+   background:#facc15;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.type-card:hover{
+    transform:translateY(-10px);
+}
+
+.type-card h2{
+    margin-bottom:15px;
+    color:#111827;
+    font-size:28px;
+    font-weight:bold;
+    white-space: nowrap;
+}
+
+.type-card a{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 22px;
+    background:green;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+}
+
+</style>
+
+<div class="register-type-container">
+
+    <!-- Seller Register -->
+    <div class="type-card">
+
+        <h2>👤 Seller Register</h2>
+
+        <p>
+            Create seller account and sell waste.
+        </p>
+
+        <a href="/register/">
+            Continue
+        </a>
+
+    </div>
+
+    <!-- Buyer Register -->
+    <div class="type-card">
+
+        <h2>🛒 Buyer Register</h2>
+
+        <p>
+            Create buyer account and purchase waste.
+        </p>
+
+        <a href="/buyer-register/">
+            Continue
+        </a>
+
+    </div>
+
+</div>
+{% include 'footer.html' %}

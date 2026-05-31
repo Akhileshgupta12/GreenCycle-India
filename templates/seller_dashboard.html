@@ -1,0 +1,206 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+
+<style>
+
+body{
+
+   background:#334155;
+    min-height:100vh;
+    font-family:Poppins;
+}
+
+.container{
+    padding:40px;
+}
+
+.container h1{
+    color:white;
+    text-align:center;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit, minmax(280px, 320px));
+    gap:30px;
+    justify-content:center;
+    margin-top:30px;
+}
+
+.card{
+    background:#bcf5bc;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0, 0, 0, 0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+}
+
+.card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+}
+
+.card-content{
+
+    padding:20px;
+}
+
+.card-content h3{
+
+    color:######;
+
+    margin-bottom:10px;
+}
+
+.card-content p{
+
+    margin:8px 0;
+
+    line-height:1.5;
+}
+
+.no-data{
+
+    text-align:center;
+
+    margin-top:120px;
+
+    color:gray;
+
+    font-size:28px;
+
+    font-weight:600;
+}
+
+a{
+
+    text-decoration:none;
+}
+
+</style>
+
+<div class="container">
+
+    <h1>📦 Waste uploaded by Me</h1>
+
+    {% if wastes %}
+
+    <div class="cards">
+
+        {% for waste in wastes %}
+
+        <div class="card">
+
+            <img src="{{ waste.image.url }}">
+
+            <div class="card-content">
+
+                <h3>
+
+                    {{ waste.material }}
+
+                </h3>
+                <p>
+
+                    <b>Uploaded:</b>
+
+                     {{ waste.original_quantity }} KG
+
+            </p>
+                <p>
+
+                    <b>Remaining:</b>
+
+                    {{ waste.quantity }} KG
+
+                </p>
+                <p>
+
+          <b>Sold:</b>
+
+          {{ waste.sold_quantity }} KG
+
+      </p>
+
+                <p style="color:green;
+                          font-weight:bold;
+                          font-size:18px;">
+
+                    💰 ₹{{ waste.price }}/kg
+
+                </p>
+
+                <p>
+
+                     {{ waste.city }},
+                    {{ waste.state }}
+
+                </p>
+
+                <p>
+
+                    🛒 Buyer Requests:
+
+                    {{ waste.buyrequest_set.count }}
+
+                </p>
+            <p>
+
+                   Uploaded:
+
+                {{ waste.created_at }}
+
+             </p>
+
+            <p>
+
+               Status:
+
+                 {{ waste.status }}
+
+            </p>
+
+            <a href="/seller-requests/{{ waste.id }}/">
+
+    <button class="view-btn">
+
+        👀 View Requests
+
+    </button>
+
+</a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="no-data">
+
+        📦 No items uploaded by you
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% include 'footer.html' %}

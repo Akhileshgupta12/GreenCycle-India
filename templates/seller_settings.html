@@ -1,0 +1,133 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+
+<style>
+
+body{
+    background:#334155;
+    font-family:Poppins;
+}
+
+.box{
+
+    width:400px;
+
+    margin:60px auto;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.box h1{
+
+    text-align:center;
+
+    margin-bottom:25px;
+}
+
+.box input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin:12px 0;
+
+    border-radius:10px;
+
+    border:1px solid #ccc;
+}
+
+.box button{
+
+    width:100%;
+
+    padding:14px;
+
+    background:#0f172a;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    margin-top:15px;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+</style>
+
+<div class="box">
+
+    <h1>
+        ⚙️ Seller Settings
+    </h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input type="text"
+               name="name"
+               value="{{ seller.name }}"
+               required>
+
+        <input type="email"
+               name="email"
+               value="{{ seller.email }}"
+               required>
+
+        <input type="text"
+               name="password"
+               value="{{ seller.password }}"
+               required>
+
+      
+<input type="text"
+       name="address"
+       value="{{ seller.address }}"
+       placeholder="Enter Address"
+       required>
+
+<input type="text"
+       name="city"
+       value="{{ seller.city }}"
+       placeholder="Enter City"
+       required>
+
+<input type="text"
+       name="state"
+       value="{{ seller.state }}"
+       placeholder="Enter State"
+       required>
+
+<input type="text"
+       name="pincode"
+       value="{{ seller.pincode }}"
+       placeholder="Enter Pincode"
+       required>
+
+
+
+        <button type="submit">
+
+            ✅ Update Profile
+
+        </button>
+
+    </form>
+
+</div>
+{% include 'footer.html' %}

@@ -1,0 +1,165 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<nav class="navbar">
+
+    <div class="brand">
+        <img src="{% static 'images/logo.png' %}">
+        <h2>GreenCycle India</h2>
+    </div>
+<div class="menu-toggle" onclick="toggleMenu()">
+    ☰
+</div>
+        
+    <ul class="menu">
+
+        <li>
+            <a href="/" class="{% if request.path == '/' %}active{% endif %}">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="/buy/">
+                Buy Waste
+            </a>
+        </li>
+
+        <li>
+            <a href="/sell/" class="{% if request.path == '/sell/' %}active{% endif %}">
+                Sell Waste
+            </a>
+        </li>
+
+        <li><a href="/about/">About</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/contact/">Contact</a></li>
+
+        {% if request.session.user_id or request.session.buyer_id %}
+
+            <li class="user-name" style="display:flex;align-items:center;">
+
+                {% if request.session.user_id %}
+
+                    <a href="/seller-profile/">
+                        👤 {{ request.session.user_name }}
+                    </a>
+
+                    <a href="/seller-notifications/"
+                       style="
+                       position:relative;
+                       margin-left:15px;
+                       text-decoration:none;
+                       font-size:22px;
+                       ">
+
+                        🔔
+
+                        {% if pending_requests_count > 0 %}
+
+                        <span style="
+                        position:absolute;
+                        top:-8px;
+                        right:-10px;
+                        background:red;
+                        color:white;
+                        width:20px;
+                        height:20px;
+                        border-radius:50%;
+                        font-size:12px;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        font-weight:bold;
+                        ">
+
+                        {{ pending_requests_count }}
+
+                        </span>
+
+                        {% endif %}
+
+                    </a>
+
+{% elif request.session.buyer_id %}
+
+    <a href="/buyer-profile/">
+        👤 {{ request.session.buyer_name }}
+    </a>
+
+<a href="/buyer-notifications/"
+   style="
+   position:relative;
+   margin-left:15px;
+   text-decoration:none;
+   font-size:22px;
+   ">
+
+    🔔
+
+    {% if buyer_notification_count > 0 %}
+
+    <span style="
+    position:absolute;
+    top:-8px;
+    right:-10px;
+    background:red;
+    color:white;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    font-size:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    ">
+
+    {{ buyer_notification_count }}
+
+    </span>
+
+    {% endif %}
+
+</a>
+
+{% endif %}
+
+
+            </li>
+
+            <li>
+                <a href="/logout/">Logout</a>
+            </li>
+
+        {% else %}
+
+            <li>
+                <a href="/login-options/">
+                    Login
+                </a>
+            </li>
+
+            <li>
+                <a href="/register-options/">
+                    Register
+                </a>
+            </li>
+
+        {% endif %}
+
+    </ul>
+
+</nav>
+
+<script>
+
+function toggleMenu() {
+
+    document.querySelector(".menu")
+            .classList.toggle("show");
+
+}
+
+</script>

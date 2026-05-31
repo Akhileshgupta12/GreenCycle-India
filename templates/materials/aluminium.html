@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Aluminium Scrap</title>
+<style>
+body{margin:0;font-family:Poppins;background:linear-gradient(135deg,#f6d365,#fda085);}
+.container{max-width:900px;margin:40px auto;padding:30px;border-radius:20px;background:white;}
+.hero img{width:100%;height:300px;object-fit:contain;}
+.price{color:green;font-weight:bold;}
+.sell-btn{width:100%;padding:12px;background:#ff5722;color:white;border:none;border-radius:10px;}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <a href="/" style="text-decoration:none; font-weight:bold; color:#14532d; font-size:18px;">
+    ⬅ Back
+</a>
+<div class="hero">
+<img src="{% static 'images/aluminium.png' %}">
+<h1>🔧 Aluminium Scrap</h1>
+<p class="price">₹120 – ₹200 per kg</p>
+</div>
+
+<p>Aluminium is lightweight and highly recyclable, used in many industries.</p>
+
+<h2>Uses</h2>
+<ul>
+<li>Packaging (cans, foils)</li>
+<li>Automobile parts</li>
+<li>Construction materials</li>
+</ul>
+
+<p><b>Demand:</b> High 🔥</p>
+<div class="container">
+
+    <h1>Sugarcane Bagasse</h1>
+
+    <p>Some details...</p>
+
+    <!-- 👇 यहाँ change करो -->
+    <a href="/sell/">
+    <button class="sell-btn">Sell Now</button>
+</a>
+</div>
+</div>
+
+</body>
+</html>

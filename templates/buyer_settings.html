@@ -1,0 +1,124 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+<style>
+
+body{
+    background:#334155;
+    font-family:Poppins;
+}
+
+.box{
+
+    width:400px;
+
+    margin:50px auto;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+input{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:12px;
+
+    border-radius:10px;
+
+    border:1px solid #ccc;
+
+    font-size:15px;
+}
+
+button{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:20px;
+
+    background:#16a34a;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    cursor:pointer;
+}
+
+button:hover{
+
+    background:#15803d;
+}
+
+</style>
+
+<div class="box">
+
+    <h2>⚙️ Buyer Settings</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input type="text"
+               name="name"
+               value="{{ buyer.name }}"
+               placeholder="Name">
+
+        <input type="email"
+               name="email"
+               value="{{ buyer.email }}"
+               placeholder="Email">
+
+        <input type="text"
+               name="password"
+               value="{{ buyer.password }}"
+               placeholder="Password">
+
+        <input type="text"
+               name="city"
+               value="{{ buyer.city }}"
+               placeholder="City">
+
+        <input type="text"
+               name="state"
+               value="{{ buyer.state }}"
+               placeholder="State">
+
+        <input type="text"
+               name="pincode"
+               value="{{ buyer.pincode }}"
+               placeholder="Pincode">
+
+        <button type="submit">
+
+            Save Changes
+
+        </button>
+
+    </form>
+
+</div>
+
+{% include 'footer.html' %}

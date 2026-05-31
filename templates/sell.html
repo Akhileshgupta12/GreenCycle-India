@@ -1,0 +1,208 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+
+<style>
+body{
+    background: linear-gradient(135deg, #d4fc79, #96e6a1);
+    font-family: 'Poppins', sans-serif;
+}
+
+.sell-container{
+    max-width: 600px;
+    margin: 60px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.sell-container h2{
+    text-align: center;
+    margin-bottom: 25px;
+    color: #14532d;
+}
+
+/* Input fields */
+.sell-container input{
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.sell-container input:focus{
+    border-color: #22c55e;
+    outline: none;
+}
+
+/* File input */
+.file-box{
+    margin-top: 10px;
+    padding: 10px;
+    border: 2px dashed #22c55e;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.file-box input{
+    border: none;
+}
+
+/* Button */
+.sell-container button{
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    background: linear-gradient(to right, #22c55e, #16a34a);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sell-container button:hover{
+    transform: scale(1.05);
+    background: linear-gradient(to right, #16a34a, #15803d);
+}
+
+/* Success */
+.success-msg{
+    text-align:center;
+    color:green;
+    margin-top:10px;
+}
+
+/* Mobile */
+@media(max-width:600px){
+    .sell-container{
+        margin: 30px 15px;
+        padding: 25px;
+    }
+}
+</style>
+
+<div class="sell-container">
+    <h2>♻️ Sell Your Waste</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text"
+         name="name" value="{{ request.session.user_name }}" readonly>
+        <input type="text" name="location" placeholder="📍 City / Village" required>
+        <input type="text" name="city" placeholder="Enter City" required>
+        <input type="text" name="state" placeholder="Enter State" required>
+        <input type="text" name="pincode" placeholder="Enter Pincode" required>
+        <input type="text"id="material"name="material"placeholder="♻️ Material Name"required>
+        <input type="number" name="quantity" placeholder="⚖️ Quantity (kg)" required>
+       <input type="text" id="price"
+       name="price"
+       placeholder="💰 Price per kg"
+       readonly
+       style="background:#e5e7eb; cursor:not-allowed;"
+       required>
+
+
+        <div class="file-box">📷 Upload Waste Image
+        <input type="file" name="image" required>
+        </div>
+        
+        <button type="submit">🚀 Submit Now</button>
+    </form>
+
+    <p class="success-msg">{{ success }}</p>
+
+
+
+
+<script>
+
+const materialInput = document.getElementById("material");
+
+const priceInput = document.getElementById("price");
+
+materialInput.addEventListener("input", function(){
+
+    let material = materialInput.value.toLowerCase();
+
+    if(material.includes("plastic")){
+
+        priceInput.value = "{{ plastic_price }}";
+
+    }
+
+    else if(material.includes("glass")){
+
+        priceInput.value = "{{ glass_price }}";
+
+    }
+
+    else if(material.includes("paper")){
+
+        priceInput.value = "{{ paper_price }}";
+
+    }
+
+    else if(material.includes("iron")){
+
+        priceInput.value = "{{ iron_price }}";
+
+    }
+
+    else if(material.includes("copper")){
+
+        priceInput.value = "{{ copper_price }}";
+
+    }
+
+    else if(material.includes("aluminium")){
+
+        priceInput.value = "{{ aluminium_price }}";
+
+    }
+
+    else if(material.includes("tin")){
+
+        priceInput.value = "{{ tin_price }}";
+
+    }
+
+    else if(material.includes("rubber")){
+
+        priceInput.value = "{{ rubber_price }}";
+
+    }
+
+    else if(material.includes("coconut")){
+
+        priceInput.value = "{{ coconut_price }}";
+
+    }
+
+    else if(material.includes("sugarcane")){
+
+        priceInput.value = "{{ sugarcane_price }}";
+
+    }
+
+    else{
+
+        priceInput.value = "";
+
+    }
+});
+
+</script>
+
+
+
+
+</div>
+{% include 'footer.html' %}

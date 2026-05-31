@@ -1,0 +1,140 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+
+<style>
+
+body{
+    background:#0f172a;
+    font-family:Poppins;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+.heading{
+    color:white;
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.content{
+    padding:20px;
+}
+
+.content h2{
+    margin-bottom:10px;
+}
+
+.price{
+    color:green;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.status{
+    margin-top:15px;
+    background:#2563eb;
+    color:white;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:bold;
+}
+
+</style>
+
+<div class="container">
+
+    <h1 class="heading">
+        📦 All Waste Uploads
+    </h1>
+
+    <div class="cards">
+
+        {% for waste in wastes %}
+
+        <div class="card">
+
+            <img src="{{ waste.image.url }}">
+
+            <div class="content">
+
+                <h2>
+                    {{ waste.material }}
+                </h2>
+
+                <p>
+
+                    <b>Seller:</b>
+
+                    {{ waste.name }}
+
+                </p>
+
+                <p>
+
+                    <b>Quantity:</b>
+
+                    {{ waste.quantity }} KG
+
+                </p>
+
+                <p>
+
+                    <b>Location:</b>
+
+                    {{ waste.city }},
+                    {{ waste.state }}
+
+                </p>
+
+                <p class="price">
+
+                    ₹{{ waste.price }}/kg
+
+                </p>
+
+                <div class="status">
+
+                    {{ waste.status }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% include 'footer.html' %}

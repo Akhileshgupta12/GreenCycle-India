@@ -1,0 +1,206 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+
+<style>
+
+body{
+    background:#334155;
+    font-family:Poppins;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+.heading{
+    color:white;
+    margin-bottom:30px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+
+.card{
+
+    background:linear-gradient(
+    135deg,
+    #f5f568,
+    #85f3a6
+    );
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.content{
+    padding:20px;
+}
+
+.content h2{
+    margin-bottom:10px;
+}
+
+.approved{
+    background:#22c55e;
+    color:white;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.rejected{
+    background:#ef4444;
+    color:white;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.empty{
+    text-align:center;
+    color:white;
+    font-size:25px;
+    margin-top:100px;
+}
+
+</style>
+
+<div class="container">
+
+    <h1 class="heading">
+        📦 My Order History
+    </h1>
+
+    {% if history %}
+
+    <div class="cards">
+
+        {% for req in history %}
+
+        <div class="card">
+
+            <img src="{{ req.waste.image.url }}">
+
+            <div class="content">
+
+                <h2>
+                    {{ req.waste.material }}
+                </h2>
+
+                <p>
+
+                    <b>Quantity:</b>
+
+                    {{ req.quantity }} KG
+
+                </p>
+
+                <p>
+
+                    <b>Payment:</b>
+
+                    {{ req.payment_method }}
+
+                </p>
+
+                <p>
+
+                    <b>Price:</b>
+
+                    ₹{{ req.waste.price }}/kg
+
+                </p>
+
+                <p>
+
+                    <b>Total:</b>
+
+                    
+₹{% widthratio req.quantity 1 req.waste.price %}
+
+
+
+                </p>
+
+                <p>
+
+                    <b>Seller Location:</b>
+
+                    {{ req.waste.city }},
+                    {{ req.waste.state }}
+
+                </p>
+
+                <p>
+
+                    <b>Date:</b>
+
+                    {{ req.created_at }}
+
+                </p>
+
+                {% if req.status == "Approved" %}
+
+                    <div class="approved">
+
+                        ✅ Approved
+
+                    </div>
+
+                {% else %}
+
+                    <div class="rejected">
+
+                        ❌ Rejected
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="empty">
+
+        No Order History Found
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% include 'footer.html' %}

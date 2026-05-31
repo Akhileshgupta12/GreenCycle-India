@@ -1,0 +1,401 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Services</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+body{
+    background:#f8fafc;
+}
+
+.hero{
+    background:linear-gradient(135deg,#15803d,#22c55e);
+    color:white;
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h1{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:20px;
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.services-section{
+    padding:70px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:40px;
+    color:#15803d;
+    margin-bottom:15px;
+}
+
+.section-subtitle{
+    text-align:center;
+    color:#64748b;
+    margin-bottom:50px;
+    font-size:18px;
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.service-card{
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.4s;
+    text-align:center;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+.icon{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.service-card h3{
+    color:#15803d;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.service-card p{
+    color:#475569;
+    line-height:1.8;
+}
+
+.stats{
+    margin-top:80px;
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.stat-box{
+    background:#15803d;
+    color:white;
+    text-align:center;
+    padding:30px;
+    border-radius:18px;
+}
+
+.stat-box h2{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.footer-section{
+    margin-top:80px;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:40px;
+}
+
+.footer-section h2{
+    margin-bottom:15px;
+}
+
+
+.footer{
+    background:#0f172a;
+    color:white;
+    margin-top:80px;
+}
+
+.footer-container{
+    width:90%;
+    max-width:1300px;
+    margin:auto;
+    padding:60px 0;
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+}
+
+.footer-box h2,
+.footer-box h3{
+    margin-bottom:20px;
+}
+
+.footer-box p{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+.footer-box a{
+    display:block;
+    color:#cbd5e1;
+    text-decoration:none;
+    margin-bottom:12px;
+    transition:.3s;
+}
+
+.footer-box a:hover{
+    color:#22c55e;
+    padding-left:5px;
+}
+
+.footer-bottom{
+    text-align:center;
+    padding:20px;
+    border-top:1px solid #334155;
+    color:#94a3b8;
+}
+
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+
+
+<h1>♻ GreenCycle Services</h1>
+
+<p>
+
+    We help individuals, industries and businesses
+    recycle waste efficiently while earning money
+    and protecting the environment.
+
+</p>
+
+
+</div>
+
+<div class="services-section">
+
+
+<h2 class="section-title">
+    Our Services
+</h2>
+
+<p class="section-subtitle">
+    Smart Recycling Solutions For A Greener Future
+</p>
+
+<div class="services-grid">
+
+    <div class="service-card">
+
+        <div class="icon">📦</div>
+
+        <h3>Waste Collection</h3>
+
+        <p>
+            Doorstep collection of plastic,
+            paper, metal, coconut and
+            sugarcane waste.
+        </p>
+
+    </div>
+
+    <div class="service-card">
+
+        <div class="icon">🏭</div>
+
+        <h3>Industrial Recycling</h3>
+
+        <p>
+            Connect industries with
+            verified recyclers and
+            waste buyers.
+        </p>
+
+    </div>
+
+    <div class="service-card">
+
+        <div class="icon">💰</div>
+
+        <h3>Best Market Price</h3>
+
+        <p>
+            Get transparent pricing
+            and maximize profit from
+            recyclable waste.
+        </p>
+
+    </div>
+
+    <div class="service-card">
+
+        <div class="icon">🚚</div>
+
+        <h3>Fast Logistics</h3>
+
+        <p>
+            Efficient transportation
+            and delivery support across
+            multiple cities.
+        </p>
+
+    </div>
+
+    <div class="service-card">
+
+        <div class="icon">🌱</div>
+
+        <h3>Eco-Friendly Process</h3>
+
+        <p>
+            Reduce landfill waste and
+            support sustainable recycling.
+        </p>
+
+    </div>
+
+    <div class="service-card">
+
+        <div class="icon">📊</div>
+
+        <h3>Waste Analytics</h3>
+
+        <p>
+            Track waste quantity,
+            sales and environmental
+            impact.
+        </p>
+
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <div class="stat-box">
+        <h2>1000+</h2>
+        <p>Waste Listings</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>500+</h2>
+        <p>Active Buyers</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>100+</h2>
+        <p>Industries Connected</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>50+</h2>
+        <p>Cities Covered</p>
+    </div>
+
+</div>
+
+
+</div>
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-box">
+
+            <h2>♻ GreenCycle India</h2>
+
+            <p>
+                India's smart recycling platform helping
+                people convert waste into value while
+                protecting the environment.
+            </p>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Quick Links</h3>
+
+            <a href="/">Home</a>
+            <a href="/buy/">Buy Waste</a>
+            <a href="/sell/">Sell Waste</a>
+            <a href="/services/">Services</a>
+            <a href="/contact/">Contact</a>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Services</h3>
+
+            <a href="#">Waste Collection</a>
+            <a href="#">Industrial Recycling</a>
+            <a href="#">Waste Analytics</a>
+            <a href="#">Eco Solutions</a>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Contact</h3>
+
+            <p>📧 support@greencycle.in</p>
+
+            <p>📞 6354279205 </p>
+
+            <p>📍 India</p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        © 2026 GreenCycle India | All Rights Reserved
+
+    </div>
+
+</footer>
+
+
+
+</body>
+
+</html>

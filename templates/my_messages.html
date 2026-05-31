@@ -1,0 +1,187 @@
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% include 'navbar.html' %}
+
+<style>
+
+body{
+    background:#0f172a;
+    font-family:Poppins;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+.heading{
+    color:white;
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.card h2{
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.email{
+    color:#0f172a;
+    margin-bottom:15px;
+    font-weight:bold;
+}
+
+.message{
+    background:#f1f5f9;
+    padding:15px;
+    border-radius:10px;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.date{
+    color:gray;
+    font-size:14px;
+}
+
+.empty{
+    color:white;
+    text-align:center;
+    margin-top:100px;
+    font-size:25px;
+}
+
+.delete-btn{
+
+    display:block;
+
+    text-align:center;
+
+    background:#ef4444;
+
+    color:white;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    margin-top:15px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
+
+</style>
+
+<div class="container">
+
+    <h1 class="heading">
+
+        📩 My Support Messages
+
+    </h1>
+
+    {% if messages %}
+
+    <div class="cards">
+
+        {% for msg in messages %}
+
+        <div class="card">
+
+            <h2>
+
+                {{ msg.name }}
+
+            </h2>
+
+            <p class="email">
+
+                {{ msg.email }}
+
+            </p>
+
+            <div class="message">
+
+                {{ msg.message }}
+
+            </div>
+
+
+<div style="
+background:#dbeafe;
+padding:15px;
+border-radius:10px;
+margin-top:15px;
+line-height:1.7;
+">
+
+<b>
+
+📩 Admin Reply:
+
+</b>
+
+<br><br>
+
+{{ msg.admin_reply }}
+
+</div>
+
+
+
+
+            <p class="date">
+
+                {{ msg.created_at }}
+
+            </p>
+
+            <a href="/delete-message/{{ msg.id }}/"
+
+               onclick="return confirm('Delete this message?')"
+
+               class="delete-btn">
+
+               🗑 Delete Message
+
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="empty">
+
+        No Messages Found
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% include 'footer.html' %}
