@@ -1,0 +1,7 @@
+services:
+
+* type: web
+  name: greencycle-india
+  env: python
+  buildCommand: "pip install -r requirements.txt"
+  startCommand: "gunicorn config.wsgi"
